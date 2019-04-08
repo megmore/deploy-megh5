@@ -5,7 +5,7 @@ import * as path  from 'path'
 import * as serve  from 'koa-static'
 import config from './config'
 
-const { port, staticPath } =  config
+const { port, ip, staticPath } =  config
 
 const app = new Koa()
 const router = new Router()
@@ -23,6 +23,6 @@ app.on('error', err => {
     console.log(err)
 })
 
-app.listen(port)
-
-console.log(`Server running on port ${config.port}`)
+app.listen(port, ip, () => {
+    console.log(`Server running on port ${config.port}`)
+})
